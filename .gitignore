@@ -1,0 +1,14 @@
+# dependencies (this project has none — these only appear from local tooling)
+node_modules/
+package.json
+package-lock.json
+
+# os / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# logs / temp
+*.log
+_shot.mjs

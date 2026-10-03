@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BuildWave — Build Your First AI Project in 60 Minutes</title>
+  <meta name="description" content="A free live workshop for final-year engineering students. Pick what you want to build, and walk out with a real AI project for your résumé. Limited seats." />
+
+  <!-- Open Graph: this is what renders when the link is dropped in a WhatsApp group -->
+  <meta property="og:title" content="Build Your First AI Project in 60 Minutes — free, live" />
+  <meta property="og:description" content="For final-year students. Grab a seat, bring two friends, walk out with a project. Seats are limited." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <!-- ========== top bar ========== -->
+  <header class="topbar">
+    <div class="wrap topbar__in">
+      <div class="brand"><span class="brand__mark" aria-hidden="true"></span> BuildWave</div>
+      <div class="topbar__spacer"></div>
+      <span class="seatpill"><span class="livedot" aria-hidden="true"></span> <span id="pillSeats">—</span> seats left</span>
+      <button class="btn btn--primary" data-open-register>Claim your seat</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== hero ========== -->
+    <section class="hero wrap">
+      <div class="hero__grid">
+        <div>
+          <span class="kicker"><span class="livedot" aria-hidden="true"></span> Free live workshop · this Saturday</span>
+          <h1>Build your first AI project in 60 minutes.</h1>
+          <p class="hero__sub">A hands-on session for final-year engineering students. Pick what you want to build — we get you to a working project in one sitting.</p>
+          <div class="hero__cta">
+            <button class="btn btn--primary" data-open-register>Claim your seat</button>
+            <a class="btn btn--ghost" href="#how">How it works</a>
+          </div>
+          <div class="hero__meta">
+            <span><b>60 min</b> start to finish</span>
+            <span><b>₹0</b> to attend</span>
+            <span><b>1</b> project on your résumé</span>
+          </div>
+        </div>
+
+        <!-- interactive idea generator: the hero's live moment -->
+        <aside class="builder" aria-label="See what you could build">
+          <div class="builder__q">What do you want to build?</div>
+          <div class="chips" id="chips" role="group" aria-label="Pick an interest"></div>
+          <div class="builder__out" id="builderOut" aria-live="polite">
+            <div class="label">In 60 minutes you'll build</div>
+            <div class="proj" id="projText">—</div>
+            <div class="stack" id="stackText"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ========== seats + countdown ========== -->
+    <section class="section section--wash">
+      <div class="wrap">
+        <div class="seats">
+          <div class="seats__num"><span id="seatsTaken">0</span><small> / <span id="seatsTotal">500</span> seats taken</small></div>
+          <div>
+            <div class="seats__track"><div class="seats__fill" id="seatsFill"></div></div>
+            <div class="count" id="countdown" aria-label="Time until the workshop"></div>
+          </div>
+          <div class="seats__left"><b id="seatsLeft">—</b><span>filling fast — registration closes when full</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== how it works (a real 4-step sequence) ========== -->
+    <section class="section wrap" id="how">
+      <h2 style="font-size:1.9rem">How a seat turns into a full room</h2>
+      <p class="lede" style="margin:12px 0 28px">The plan isn't to buy 500 registrations — ₹2,000 can't. It's to make the first students bring the next ones. Here's the loop.</p>
+      <div class="flow">
+        <div class="flow__step"><div class="n">Step 1</div><h3>Claim a seat</h3><p>Register in 20 seconds. Pick what you want to build and see your project instantly.</p></div>
+        <div class="flow__step"><div class="n">Step 2</div><h3>Bring two friends</h3><p>You get a referral link. Share it to your college WhatsApp groups in one tap.</p></div>
+        <div class="flow__step"><div class="n">Step 3</div><h3>Unlock the kit</h3><p>Two friends in, and your Project Starter Kit + priority batch unlock automatically.</p></div>
+        <div class="flow__step"><div class="n">Step 4</div><h3>Climb the board</h3><p>Top referrers get a Verified Builder badge and a mentor slot. Students compete to win it.</p></div>
+      </div>
+    </section>
+
+    <!-- ========== leaderboard ========== -->
+    <section class="section section--wash" id="leaderboard">
+      <div class="wrap">
+        <div style="display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px">
+          <div>
+            <h2 style="font-size:1.9rem">Top builders this week</h2>
+            <p class="lede" style="margin-top:8px">The students bringing the most friends. The board is live — your spot updates the moment someone joins on your link.</p>
+          </div>
+          <button class="btn btn--primary" data-open-register>Get on the board</button>
+        </div>
+        <div class="board" id="board"></div>
+      </div>
+    </section>
+
+    <!-- ========== organizer / tracker ========== -->
+    <section class="section wrap" id="tracker">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px">
+        <div>
+          <h2 style="font-size:1.9rem">Organizer view</h2>
+          <p class="lede" style="margin-top:8px">The same engine, seen from the growth side — how the 500 actually come in.</p>
+        </div>
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-view="student" role="tab">Student view</button>
+          <button class="tab" data-view="organizer" role="tab">Organizer view</button>
+        </div>
+      </div>
+
+      <div class="view active" id="view-student">
+        <p class="lede">You're looking at it — the whole page above is the student experience. Switch to the organizer view to see the funnel and referral growth in real time.</p>
+      </div>
+
+      <div class="view" id="view-organizer">
+        <div class="stats">
+          <div class="stat"><b id="stRegs">0</b><span>Total registrations</span></div>
+          <div class="stat"><b id="stReferred">0%</b><span>Came via referral</span></div>
+          <div class="stat"><b id="stK">0.0</b><span>Invites per builder (K-factor)</span></div>
+          <div class="stat"><b id="stCost">₹0</b><span>Cost per registration</span></div>
+        </div>
+
+        <div class="funnel">
+          <h3 style="font-size:1.15rem;margin-bottom:16px">Where 500 comes from</h3>
+          <div class="funnel__row"><div class="funnel__lbl">Seeded (class reps, clubs)</div><div><div class="funnel__bar" id="fSeed"></div></div><div class="funnel__val" id="fSeedV">0</div></div>
+          <div class="funnel__row"><div class="funnel__lbl">1st-degree referrals</div><div><div class="funnel__bar" id="fR1"></div></div><div class="funnel__val" id="fR1V">0</div></div>
+          <div class="funnel__row"><div class="funnel__lbl">2nd-degree referrals</div><div><div class="funnel__bar" id="fR2"></div></div><div class="funnel__val" id="fR2V">0</div></div>
+        </div>
+
+        <div class="sim">
+          <p><b>Prototype control.</b> Real referrals travel across phones; this demo runs in one browser, so use this to simulate friends joining and watch the board and funnel move.</p>
+          <button class="btn btn--ghost" id="simBtn">Simulate 5 referrals</button>
+          <button class="btn btn--ghost" id="resetBtn">Reset demo data</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot wrap">
+      <div>BuildWave · a growth prototype for the “Build Your First AI Project in 60 Minutes” workshop.</div>
+      <div style="margin-top:6px">Built for the NxtWave Growth Challenge. Names and counts shown are illustrative prototype data.</div>
+    </footer>
+  </main>
+
+  <!-- ========== register / referral modal ========== -->
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__scrim" data-close></div>
+    <div class="modal__card">
+      <button class="modal__close" data-close aria-label="Close">✕</button>
+
+      <!-- step A: the form -->
+      <div id="formStep">
+        <h2 id="modalTitle">Claim your seat</h2>
+        <p style="color:var(--ink-soft);margin:8px 0 2px">Free, live, this Saturday. Takes 20 seconds.</p>
+        <form id="regForm" novalidate>
+          <div class="field"><label for="fName">Name</label><input id="fName" name="name" autocomplete="name" /><div class="err" data-err="name"></div></div>
+          <div class="field"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" autocomplete="email" /><div class="err" data-err="email"></div></div>
+          <div class="field"><label for="fCollege">College</label><input id="fCollege" name="college" /><div class="err" data-err="college"></div></div>
+          <div class="field">
+            <label for="fBuild">What do you want to build?</label>
+            <select id="fBuild" name="build"></select>
+          </div>
+          <div class="field" style="margin-top:20px"><button class="btn btn--primary btn--block" type="submit">Reserve my seat</button></div>
+          <p class="fineprint">No spam. We'll send one reminder before the workshop.</p>
+        </form>
+      </div>
+
+      <!-- step B: referral success -->
+      <div id="refStep" style="display:none">
+        <h2>You're in, <span id="refName">builder</span>. Seat <span id="refSeat">—</span> reserved.</h2>
+        <p style="color:var(--ink-soft);margin:8px 0 14px">Now the part that gets you the good stuff. Bring two friends and your kit unlocks.</p>
+
+        <label style="font-size:.85rem;font-weight:600">Your referral link</label>
+        <div class="ref__code">
+          <input id="refLink" readonly />
+          <button class="btn btn--ghost" id="copyBtn">Copy</button>
+        </div>
+
+        <a class="btn btn--wa btn--block" id="waBtn" style="margin-top:12px" target="_blank" rel="noopener">Share on WhatsApp</a>
+
+        <div class="unlock" id="unlock">
+          <div class="unlock__title" style="font-weight:600" id="unlockTitle">0 of 2 friends joined — kit locked</div>
+          <div class="unlock__bar"><div class="unlock__fill" id="unlockFill"></div></div>
+        </div>
+
+        <p class="fineprint">You're <span id="refRankLine">on the board</span>. Climb it to earn the Verified Builder badge.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
