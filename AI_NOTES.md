@@ -49,3 +49,16 @@ How I used AI on this challenge — and, just as important, where I overrode it.
 - **Constraints are the brief.** The ₹2,000 wasn't a detail — it was the whole puzzle. Spotting that it rules out paid ads is what pointed to the referral strategy.
 - **AI is a fast first-drafter, not the decision-maker.** Every strong choice here came from *rejecting* the obvious AI default (ads, landing page, benefit bullets) against the specific constraints and audience.
 - **Build the mechanism, not the brochure.** The most defensible asset is the one that *is* the growth loop, not one that merely describes the offer.
+
+---
+
+## Reflection — the three questions
+
+**1. What changed between your first idea and final solution?**
+I started with a landing page and a signup form, then dropped it — the brief said everyone builds one, and a form only *collects* registrations, it doesn't *generate* them. I rebuilt the asset as the referral loop itself, because on a ₹2,000 budget virality is the only path to 500.
+
+**2. If you had another 24 hours, what would you improve?**
+Wire a real backend (Supabase) so referrals track across devices — I've already architected for it: every read/write goes through one `Store` object, so it's a one-file swap. I'd also add admin auth on the organizer view and A/B test two hero headlines to lift conversion.
+
+**3. What did AI suggest that you rejected, and why?**
+Paid ads (₹2,000 buys ~10–15 clicks, can't reach 500), a generic landing page (passive, and everyone builds one), and a bullet list of benefits (replaced with a live idea generator). AI was a fast first-drafter — every strong decision came from rejecting its default against the real constraint.
